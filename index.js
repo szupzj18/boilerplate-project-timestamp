@@ -18,6 +18,16 @@ app.get("/", function (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
+//  You should provide your own project, not the example URL.
+//  A request to /api/:date? with a valid date should return a JSON object with a unix key that is a Unix timestamp of the input date in milliseconds (as type Number)
+//  A request to /api/:date? with a valid date should return a JSON object with a utc key that is a string of the input date in the format: Thu, 01 Jan 1970 00:00:00 GMT
+//  A request to /api/1451001600000 should return { unix: 1451001600000, utc: "Fri, 25 Dec 2015 00:00:00 GMT" }
+// process timestamp
+app.get("/api/:timestamp", function(req, res){
+  let timestamp = req.params.timestamp;
+  // date format validation.
+  res.json({res:timestamp});
+});
 
 // your first API endpoint... 
 app.get("/api/hello", function (req, res) {
@@ -27,6 +37,6 @@ app.get("/api/hello", function (req, res) {
 
 
 // listen for requests :)
-var listener = app.listen(process.env.PORT, function () {
+var listener = app.listen(3001, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });

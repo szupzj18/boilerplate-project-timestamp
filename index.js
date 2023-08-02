@@ -23,10 +23,14 @@ app.get("/", function (req, res) {
 //  A request to /api/:date? with a valid date should return a JSON object with a utc key that is a string of the input date in the format: Thu, 01 Jan 1970 00:00:00 GMT
 //  A request to /api/1451001600000 should return { unix: 1451001600000, utc: "Fri, 25 Dec 2015 00:00:00 GMT" }
 // process timestamp
-app.get("/api/:timestamp", function(req, res){
-  let timestamp = req.params.timestamp;
-  // date format validation.
-  res.json({res:timestamp});
+app.get("/api/:time", function(req, res){
+  let timestamp = req.params.time;
+  // TODO: date format validation.
+  // if date format
+  // return:
+  // - unix: unix time format
+  // - utc: utc time format
+  res.json({unix:timestamp, utc:timestamp});
 });
 
 // your first API endpoint... 
